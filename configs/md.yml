@@ -1,0 +1,47 @@
+train:
+  seed: 42
+  train_samples: 1024
+  val_samples: 2048
+  max_iter: 2000
+  batch_size: 64
+  log_freq: 10000
+  val_freq: 20
+  save_freq: 100
+  max_grad_norm: 100.
+  optimizer:
+    type: adam
+    lr: 5.e-3
+    weight_decay: 0.
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.5
+    patience: 5
+    min_lr: 1.e-5
+
+test:
+  batch_size: 16
+  inf_samples: 4096
+  num_infer: null
+  num_vis: 2
+
+datasets:
+  type: small_density
+  root: ./data/small_ecd
+  mol_name: malonaldehyde
+
+model:
+  type: infgcn
+  n_atom_type: 3
+  num_radial: 16
+  num_spherical: 7
+  radial_embed_size: 64
+  radial_hidden_size: 128
+  num_radial_layer: 2
+  num_gcn_layer: 3
+  cutoff: 3.
+  grid_cutoff: 3.
+  is_fc: false
+  gauss_start: 0.5
+  gauss_end: 5.

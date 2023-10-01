@@ -1,0 +1,54 @@
+train:
+  seed: 42
+  train_samples: 1024
+  val_samples: 2048
+  max_iter: 10000
+  batch_size: 32
+  log_freq: 10
+  val_freq: 100
+  save_freq: 500
+  max_grad_norm: 100.
+  optimizer:
+    type: adam
+    lr: 5.e-3
+    weight_decay: 0.
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.5
+    patience: 5
+    min_lr: 1.e-5
+
+test:
+  batch_size: 16
+  inf_samples: 4096
+  num_infer: null
+  num_vis: 2
+
+datasets:
+  type: density
+  root: ./data/crystal
+  split_file: data_split.json
+  atom_file: ./atom_info/crystal.json
+  extension: json
+  compression: xz
+  pbc: false  # We do not need to tile the atoms when loading the data.
+              # Instead, we will put constraint during basis expansion.
+
+model:
+  type: infgcn
+  n_atom_type: 84
+  num_radial: 16
+  num_spherical: 7
+  radial_embed_size: 64
+  radial_hidden_size: 128
+  num_radial_layer: 2
+  num_gcn_layer: 3
+  cutoff: 5.
+  grid_cutoff: 5.
+  is_fc: false
+  gauss_start: 0.5
+  gauss_end: 5.
+  residual: false
+  pbc: true

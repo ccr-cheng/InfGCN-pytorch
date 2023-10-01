@@ -1,0 +1,54 @@
+train:
+  seed: 42
+  train_samples: 1024
+  val_samples: 1024
+  max_iter: 40000
+  batch_size: 64
+  log_freq: 20
+  val_freq: 200
+  save_freq: 2000
+  max_grad_norm: 100.
+  optimizer:
+    type: adam
+    lr: 1.e-3
+    weight_decay: 0.
+    beta1: 0.9
+    beta2: 0.999
+  scheduler:
+    type: plateau
+    factor: 0.5
+    patience: 10
+    min_lr: 1.e-5
+
+test:
+  batch_size: 16
+  inf_samples: 4096
+  num_infer: 100
+  num_vis: 2
+
+datasets:
+  type: density
+  root: ./data/QM9
+  split_file: data_split.json
+  atom_file: ./atom_info/qm9.json
+  extension: CHGCAR
+  compression: lz4
+  pbc: false
+  test:
+    rotate: true
+
+model:
+  type: infgcn
+  n_atom_type: 5
+  num_radial: 16
+  num_spherical: 7
+  radial_embed_size: 64
+  radial_hidden_size: 128
+  num_radial_layer: 2
+  num_gcn_layer: 3
+  cutoff: 3.
+  grid_cutoff: 3.
+  is_fc: false
+  gauss_start: 0.5
+  gauss_end: 5.
+  residual: true
