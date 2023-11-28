@@ -2,8 +2,11 @@
 
 By Chaoran Cheng, Oct 1, 2023
 
-Official implementation of the NeurIPS 23 spotlight paper *Equivariant Neural Operator Learning with Graphon Convolution* for
+Official implementation of the NeurIPS 23 spotlight paper *Equivariant Neural Operator Learning with Graphon
+Convolution* for
 modeling operators on continuous data.
+
+UPDATE: The pretrained model is available [here](https://uofi.box.com/s/8nfosxts1i8g643f8etdqqbtqlg5clhk).
 
 ## Requirements
 
@@ -57,7 +60,8 @@ coefficients, and we provided code to convert them.
 
 Most hyperparameters are specified in the config files. More parameters in the YAML file is self-explanatory.
 See [this readme](configs/README.md) for more details on modifying the config files. Free feel to modify the config
-files to suit your needs or to add new models.
+files to suit your needs or to add new models. The pretrained model together with a sample electron density file is
+available [here](https://uofi.box.com/s/8nfosxts1i8g643f8etdqqbtqlg5clhk).
 
 ### Training
 
@@ -88,7 +92,10 @@ initialization arguments can be different (see the [instructions](configs/README
 
 ## Result
 
-The below figures demonstrate the normalized mean absolute error (NMAE) vs the model size of our model and all the baseline model on the QM9 dataset. Here, `s0` to `s6` refer to the maximum degree of spherical harmonics used in the model (InfGCN is `s7`). `no-res` refers to the model without residual connection and `fc` refers to the model without fully-connected tensor product. The pink points are interpolation GNNs and oranges points are neural operators.
+The below figures demonstrate the normalized mean absolute error (NMAE) vs the model size of our model and all the
+baseline model on the QM9 dataset. Here, `s0` to `s6` refer to the maximum degree of spherical harmonics used in the
+model (InfGCN is `s7`). `no-res` refers to the model without residual connection and `fc` refers to the model without
+fully-connected tensor product. The pink points are interpolation GNNs and oranges points are neural operators.
 
 <div style="justify-content: center">
 <img src="assets/res_plot.png" width="400" alt="QM9 Rotated">
