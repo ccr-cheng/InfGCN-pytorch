@@ -2,6 +2,8 @@
 
 By Chaoran Cheng, Oct 1, 2023
 
+[OpenReview](https://openreview.net/forum?id=EjiA3uWpnc), [ArXiv](https://arxiv.org/abs/2311.10908)
+
 Official implementation of the NeurIPS 23 spotlight paper *Equivariant Neural Operator Learning with Graphon
 Convolution* for
 modeling operators on continuous data.
@@ -68,7 +70,7 @@ available [here](https://uofi.box.com/s/8nfosxts1i8g643f8etdqqbtqlg5clhk).
 To train the model, run
 
 ```bash
-python configs/qm9.yml --savename test
+python main.py configs/qm9.yml --savename test
 ```
 
 ### Evaluation
@@ -76,7 +78,7 @@ python configs/qm9.yml --savename test
 To evaluate the model, run
 
 ```bash
-python configs/qm9.yml --savename test --mode inf --resume <model_path>
+python main.py configs/qm9.yml --savename test --mode inf --resume <model_path>
 ```
 
 ### Inference
